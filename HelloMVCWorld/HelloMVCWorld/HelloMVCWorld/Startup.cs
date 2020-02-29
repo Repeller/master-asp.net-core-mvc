@@ -16,6 +16,8 @@ namespace HelloMVCWorld
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // why not AddMvcCore?
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,11 +32,9 @@ namespace HelloMVCWorld
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    // this line
-                    await context.Response.WriteAsync("Hello, MVC World!");
-                });
+                // this only works because we called the controller 'HomeController'
+                // if it had an other name, then it would not be able to load a controller
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
