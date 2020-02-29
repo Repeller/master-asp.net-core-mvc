@@ -14,8 +14,7 @@ namespace HelloMVCWorld.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            // return View(); // old line
-            return Content("Hello, MVC world!");
+            return View();
         }
     }
 }
